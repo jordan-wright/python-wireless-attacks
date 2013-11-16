@@ -48,8 +48,8 @@ def send_response(x):
 
 def main():
 	logger.info('Starting to intercept [CTRL+C to stop]')
-	data = sniff(prn=lambda x: send_response(x), lfilter=lambda x:x.haslayer(UDP) and x.dport == 53)
-	return data
+	sniff(prn=lambda x: send_response(x), lfilter=lambda x:x.haslayer(UDP) and x.dport == 53)
 
-# Make it happen!
-data = main()
+if __name__ == "__main__":
+	# Make it happen!
+	main()
